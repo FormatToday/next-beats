@@ -32,7 +32,7 @@ jobs:
       - name: 构建 Docker 镜像
         run: |
          # 构建两个标签的镜像：latest 和基于日期的标签
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/NextBeats:${{ env.DATE_TAG }} -t ${{ secrets.DOCKER_USERNAME }}/NextBeats:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/next-beats:${{ env.DATE_TAG }} -t ${{ secrets.DOCKER_USERNAME }}/next-beats:latest .
 
       - name: 登录 Docker Hub
         uses: docker/login-action@master
@@ -43,8 +43,8 @@ jobs:
       - name: 推送 Docker 镜像到 Docker Hub
         run: |
          # 推送 latest 和日期标签的镜像
-          docker push ${{ secrets.DOCKER_USERNAME }}/NextBeats:${{ env.DATE_TAG }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/NextBeats:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/next-beats:${{ env.DATE_TAG }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/next-beats:latest
   
       - name: 删除旧 Actions
         uses: Mattraks/delete-workflow-runs@main
